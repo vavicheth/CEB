@@ -13,7 +13,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 2), () {
+    Timer(Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
         PageTransition(

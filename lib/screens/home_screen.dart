@@ -1,6 +1,8 @@
 import 'package:ceb/components/drawer_component.dart';
+import 'package:ceb/screens/pdfview_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_search_bar/loader_search_bar.dart';
+import 'package:page_transition/page_transition.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       drawer: _buildDrawer(),
       appBar: _buildAppBar(),
+      body: _buildBody(),
     );
   }
 
@@ -109,13 +112,213 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   _buildAppBar() {
-    return SearchBar(
-      defaultBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.menu),
-          onPressed: _buildDrawer,
-        ),
-        title: Text('Default app bar title'),
+    return AppBar(
+      actions: <Widget>[
+        IconButton(icon: Icon(Icons.notifications,color: Colors.white,), onPressed: null)
+      ],
+    );
+//    return SearchBar(
+//      defaultBar: AppBar(
+//        leading: IconButton(
+//          icon: Icon(Icons.menu),
+//          onPressed: _buildDrawer,
+//        ),
+//        title: Text('Default app bar title'),
+//      ),
+//    );
+  }
+
+  _buildBody() {
+    return SingleChildScrollView(
+      child: Column(
+        children: <Widget>[
+          Card(
+            color: Colors.lightBlueAccent,
+            child: InkWell(
+              onTap: (){
+                Navigator.push(
+                  context,
+                  PageTransition(
+                      type: PageTransitionType.rightToLeft,
+                      child: PDFView()),
+                );
+              },
+              child: Container(
+                padding: EdgeInsets.all(5.0),
+                height: 100.0,
+                child: Row(
+                  children: <Widget>[
+                    Container(
+                      width: 100.0,
+                      height: 100.0,
+                        child: Image.asset('assets/images/bg_drawer.png'),
+
+                    ),
+                    SizedBox(
+                      width: 20.0,
+                    ),
+                    Text('This is sample of E-book App',style: TextStyle(fontSize: 20.0,color: Colors.white),),
+
+                  ],
+                ),
+              ),
+            ),
+          ),
+          Card(
+            color: Colors.lightBlueAccent,
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              height: 100.0,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 100.0,
+                    height: 100.0,
+                      child: Image.asset('assets/images/bg_drawer.png'),
+
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Text('This is sample of E-book App',style: TextStyle(fontSize: 20.0,color: Colors.white),),
+
+                ],
+              ),
+            ),
+          ),
+          Card(
+            color: Colors.lightBlueAccent,
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              height: 100.0,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 100.0,
+                    height: 100.0,
+                    child: Image.asset('assets/images/bg_drawer.png'),
+
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Text('This is sample of E-book App',style: TextStyle(fontSize: 20.0,color: Colors.white),),
+
+                ],
+              ),
+            ),
+          ),
+          Card(
+            color: Colors.lightBlueAccent,
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              height: 100.0,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 100.0,
+                    height: 100.0,
+                    child: Image.asset('assets/images/bg_drawer.png'),
+
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Text('This is sample of E-book App',style: TextStyle(fontSize: 20.0,color: Colors.white),),
+
+                ],
+              ),
+            ),
+          ),
+          Card(
+            color: Colors.lightBlueAccent,
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              height: 100.0,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 100.0,
+                    height: 100.0,
+                    child: Image.asset('assets/images/bg_drawer.png'),
+
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Text('This is sample of E-book App',style: TextStyle(fontSize: 20.0,color: Colors.white),),
+
+                ],
+              ),
+            ),
+          ),
+          Card(
+            color: Colors.lightBlueAccent,
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              height: 100.0,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 100.0,
+                    height: 100.0,
+                    child: Image.asset('assets/images/bg_drawer.png'),
+
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Text('This is sample of E-book App',style: TextStyle(fontSize: 20.0,color: Colors.white),),
+
+                ],
+              ),
+            ),
+          ),
+          Card(
+            color: Colors.lightBlueAccent,
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              height: 100.0,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 100.0,
+                    height: 100.0,
+                    child: Image.asset('assets/images/bg_drawer.png'),
+
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Text('This is sample of E-book App',style: TextStyle(fontSize: 20.0,color: Colors.white),),
+
+                ],
+              ),
+            ),
+          ),
+          Card(
+            color: Colors.lightBlueAccent,
+            child: Container(
+              padding: EdgeInsets.all(5.0),
+              height: 100.0,
+              child: Row(
+                children: <Widget>[
+                  Container(
+                    width: 100.0,
+                    height: 100.0,
+                    child: Image.asset('assets/images/bg_drawer.png'),
+
+                  ),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                  Text('This is sample of E-book App',style: TextStyle(fontSize: 20.0,color: Colors.white),),
+
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
