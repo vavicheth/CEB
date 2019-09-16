@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "301218488238",
+    "firebase_url": "https://calmette-ceb-e9ee3.firebaseio.com",
+    "project_id": "calmette-ceb-e9ee3",
+    "storage_bucket": "calmette-ceb-e9ee3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:301218488238:android:da4e1033117ab4f726f23f",
+        "android_client_info": {
+          "package_name": "org.calmette.ceb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "301218488238-tfjnhssf4n10q6nt26r7mmsl3c0r779c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.calmette.ceb",
+            "certificate_hash": "24bdb7307821c7db2583f6e2cae5f64256eab40a"
+          }
+        },
+        {
+          "client_id": "301218488238-jngvhk0c8lvhns074in7r72gh3jsab7b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAFgg7tAC3wuw10R1rnKZWz-nl42oKuC8M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "301218488238-jngvhk0c8lvhns074in7r72gh3jsab7b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:ceb/screens/home_screen.dart';
 import 'package:ceb/screens/login_screen.dart';
+import 'package:ceb/ui/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:page_transition/page_transition.dart';
 
@@ -17,9 +18,10 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       Navigator.pushReplacement(
         context,
         PageTransition(
-            type: PageTransitionType.fade,
-            duration: Duration(seconds: 1),
-            child: HomeScreen()),
+          type: PageTransitionType.fade,
+          duration: Duration(seconds: 1),
+          child: HomeScreen(),
+        ),
       );
     });
   }
@@ -28,7 +30,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.blueAccent,
+        color: primaryDark,
         alignment: Alignment.center,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

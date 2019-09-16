@@ -14,8 +14,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _buildBody() {
-    return Container(
-      color: Colors.black38,
-    );
+    return Container();
   }
 }
