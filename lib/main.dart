@@ -1,3 +1,4 @@
+import 'package:ceb/screens/login_screen.dart';
 import 'package:ceb/screens/welcome_screen.dart';
 import 'package:ceb/ui/colors.dart';
 import 'package:ceb/ui/theme.dart';
@@ -16,7 +17,7 @@ class CEBApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: buildThemeData(),
-      home: WelcomeScreen(),
+      home: LoginScreen(),
     );
   }
 }

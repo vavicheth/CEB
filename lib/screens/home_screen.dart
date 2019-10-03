@@ -17,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: _buildDrawer(),
       appBar: _buildAppBar(),
       body: _buildBody(),
+      bottomNavigationBar: _buildNavigationBar(),
     );
   }
 
@@ -309,6 +310,29 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+
+  _buildNavigationBar() {
+    return BottomAppBar(
+//      color: primaryDark,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: <Widget>[
+          IconButton(
+              icon: Icon(
+                Icons.home,
+                color: primaryDark,
+              ),
+              onPressed: null),
+          IconButton(
+              icon: Icon(
+                Icons.account_box,
+                color: primaryDark,
+              ),
+              onPressed: null),
         ],
       ),
     );
