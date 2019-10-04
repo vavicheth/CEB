@@ -1,5 +1,7 @@
+import 'package:ceb/screens/register_screen.dart';
 import 'package:ceb/ui/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -27,8 +29,13 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: <Widget>[
             Container(
+              height: 150.0,
+              padding: EdgeInsets.all(20.0),
+              child: Image.asset('assets/images/logo_ch.png'),
+            ),
+            Container(
               child: Padding(
-                padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+                padding: EdgeInsets.all(20.0),
                 child: TextField(
                   style: TextStyle(color: secondaryWhite),
                   controller: _emailCtrl,
@@ -76,9 +83,117 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            SizedBox(
-              height: 80.0,
+//            SizedBox(
+//              height: 40.0,
+//            ),
+            Container(
+              height: 60.0,
+              padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+              child: InkWell(
+                child: Material(
+                  elevation: 5.0,
+                  color: primaryColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Sign in with Email',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {
+                  //TODO: signin
+                },
+              ),
             ),
+            Container(
+              height: 60.0,
+              padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+              child: InkWell(
+                child: Material(
+                  elevation: 5.0,
+                  color: primaryColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        'Sign Up',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      PageTransition(
+                          type: PageTransitionType.rightToLeft,
+                          child: RegisterScreen()));
+                },
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.all(20.0),
+              child: Text(
+                'Or',
+                style: TextStyle(color: secondaryColor),
+              ),
+            ),
+            Container(
+              height: 60.0,
+              padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+              child: InkWell(
+                child: Material(
+                  elevation: 5.0,
+                  color: Color(0xFFB03323),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/images/gmail_logo.png',
+                        height: 30,
+                      ),
+                      Text(
+                        'Sign in with Gmail',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {
+                  //TODO: signin
+                },
+              ),
+            ),
+            Container(
+              height: 60.0,
+              padding: EdgeInsets.only(left: 20.0, right: 20.0, bottom: 20.0),
+              child: InkWell(
+                child: Material(
+                  elevation: 5.0,
+                  color: Color(0xFF2D67A5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Image.asset(
+                        'assets/images/fb_logo.png',
+                        height: 30,
+                      ),
+                      Text(
+                        'Sign in with Facebook',
+                        style: TextStyle(color: Colors.white, fontSize: 18.0),
+                      ),
+                    ],
+                  ),
+                ),
+                onTap: () {
+                  //TODO: signin
+                },
+              ),
+            ),
+
           ],
         ),
       ),
