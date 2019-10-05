@@ -1,16 +1,25 @@
 import 'package:ceb/components/drawer_component.dart';
+import 'package:ceb/screens/login_screen.dart';
 import 'package:ceb/screens/pdfview_screen.dart';
 import 'package:ceb/ui/colors.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:loader_search_bar/loader_search_bar.dart';
 import 'package:page_transition/page_transition.dart';
+import 'package:ceb/helpers/auth_google_helper.dart';
 
 class HomeScreen extends StatefulWidget {
+  final FirebaseUser user;
+  HomeScreen({this.user});
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  GoogleSignIn _googleSignIn=GoogleSignIn();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,8 +85,20 @@ class _HomeScreenState extends State<HomeScreen> {
             DrawerListTile(
               title: 'Logout',
               leadIcon: Icons.power_settings_new,
-              onPressed: () {
-                print('Clicked Contact!');
+              onPressed: () async {
+                if(await _googleSignIn.isSignedIn()){
+                  _googleSignIn.signOut();
+                  Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      child: LoginScreen(),
+                    ),
+                  );
+                }else{
+                  
+                }
+
               },
             ),
           ],
