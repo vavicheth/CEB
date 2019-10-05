@@ -1,3 +1,6 @@
+import 'package:ceb/helpers/auth_email_helper.dart';
+import 'package:ceb/helpers/auth_google_helper.dart';
+import 'package:ceb/screens/home_screen.dart';
 import 'package:ceb/screens/register_screen.dart';
 import 'package:ceb/ui/colors.dart';
 import 'package:flutter/material.dart';
@@ -104,7 +107,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 onTap: () {
-                  //TODO: signin
+                  loginByEmail(_emailCtrl.text, _passwordCtrl.text)
+                      .then((user) {
+//                    saveDataToLocal('useremail', _emailCtrl.text);
+//                    saveDataToLocal('pwd', _passwordCtrl.text);
+//
+//                    writeStorage('userstorage', _emailCtrl.text);
+//                    writeStorage('pwdstorage', _passwordCtrl.text);
+
+                    print('userID: ${user.uid} and email: ${user.email}');
+                    Navigator.pushReplacement(
+                      context,
+                      PageTransition(
+                        type: PageTransitionType.fade,
+                        child: HomeScreen(),
+                      ),
+                    );
+                  });
                 },
               ),
             ),
@@ -126,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                       context,
                       PageTransition(
                           type: PageTransitionType.rightToLeft,
@@ -163,7 +182,19 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 onTap: () {
-                  //TODO: signin
+                  googleSignIn().then((user) {
+                    if (user != null) {
+                      Navigator.pushReplacement(
+                        context,
+                        PageTransition(
+                          type: PageTransitionType.fade,
+                          child: HomeScreen(),
+                        ),
+                      );
+                    } else {
+                      print('Login faild');
+                    }
+                  });
                 },
               ),
             ),
@@ -193,7 +224,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 },
               ),
             ),
-
           ],
         ),
       ),
