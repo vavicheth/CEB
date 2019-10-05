@@ -1,10 +1,14 @@
 import 'package:ceb/helpers/auth_phonenumber_helper.dart';
+import 'package:ceb/helpers/storage_helper.dart';
 import 'package:ceb/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../ui/colors.dart';
 
 class VerifyPhoneScreen extends StatefulWidget {
+  final String phonenum;
+  VerifyPhoneScreen({this.phonenum});
+
   @override
   _VerifyPhoneScreenState createState() => _VerifyPhoneScreenState();
 }
@@ -78,6 +82,7 @@ class _VerifyPhoneScreenState extends State<VerifyPhoneScreen> {
                 onTap: () {
                   verifyCode(_verifyCode.text).then((verified) {
                     if (verified) {
+                      writeStorage('phonenum', widget.phonenum);
                       Navigator.of(context).pushReplacement(MaterialPageRoute(
                           builder: (context) => HomeScreen()));
                     } else {

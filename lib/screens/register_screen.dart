@@ -164,7 +164,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     context,
                     PageTransition(
                       type: PageTransitionType.fade,
-                      child: VerifyPhoneScreen(),
+                      child: VerifyPhoneScreen(
+                        phonenum: _phoneNumber.text,
+                      ),
                     ),
                   );
                 },

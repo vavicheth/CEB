@@ -1,5 +1,6 @@
 import 'package:ceb/helpers/auth_email_helper.dart';
 import 'package:ceb/helpers/auth_google_helper.dart';
+import 'package:ceb/helpers/storage_helper.dart';
 import 'package:ceb/screens/home_screen.dart';
 import 'package:ceb/screens/register_screen.dart';
 import 'package:ceb/ui/colors.dart';
@@ -109,13 +110,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 onTap: () {
                   loginByEmail(_emailCtrl.text, _passwordCtrl.text)
                       .then((user) {
-//                    saveDataToLocal('useremail', _emailCtrl.text);
-//                    saveDataToLocal('pwd', _passwordCtrl.text);
-//
-//                    writeStorage('userstorage', _emailCtrl.text);
-//                    writeStorage('pwdstorage', _passwordCtrl.text);
-
-                    print('userID: ${user.uid} and email: ${user.email}');
                     Navigator.pushReplacement(
                       context,
                       PageTransition(

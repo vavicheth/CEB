@@ -1,4 +1,5 @@
 import 'package:ceb/components/drawer_component.dart';
+import 'package:ceb/helpers/storage_helper.dart';
 import 'package:ceb/screens/login_screen.dart';
 import 'package:ceb/screens/pdfview_screen.dart';
 import 'package:ceb/ui/colors.dart';
@@ -18,7 +19,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  GoogleSignIn _googleSignIn=GoogleSignIn();
+  GoogleSignIn _googleSignIn = GoogleSignIn();
 
   @override
   Widget build(BuildContext context) {
@@ -86,7 +87,7 @@ class _HomeScreenState extends State<HomeScreen> {
               title: 'Logout',
               leadIcon: Icons.power_settings_new,
               onPressed: () async {
-                if(await _googleSignIn.isSignedIn()){
+                if (await _googleSignIn.isSignedIn()) {
                   _googleSignIn.signOut();
                   Navigator.pushReplacement(
                     context,
@@ -95,10 +96,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: LoginScreen(),
                     ),
                   );
-                }else{
-                  
+                } else {
+                  await FirebaseAuth.instance.signOut();
+                  Navigator.pushReplacement(
+                    context,
+                    PageTransition(
+                      type: PageTransitionType.fade,
+                      child: LoginScreen(),
+                    ),
+                  );
                 }
-
               },
             ),
           ],
