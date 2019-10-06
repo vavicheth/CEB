@@ -1,13 +1,16 @@
 import 'package:ceb/components/drawer_component.dart';
 import 'package:ceb/helpers/storage_helper.dart';
 import 'package:ceb/models/books_model.dart';
+import 'package:ceb/screens/about_screen.dart';
 import 'package:ceb/screens/admin/booklist_screen.dart';
+import 'package:ceb/screens/contactus_screen.dart';
 import 'package:ceb/screens/login_screen.dart';
 import 'package:ceb/screens/pdfview_screen.dart';
 import 'package:ceb/ui/colors.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fancy_bottom_navigation/fancy_bottom_navigation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -25,25 +28,25 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   GoogleSignIn _googleSignIn = GoogleSignIn();
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: _buildDrawer(),
+      key: _scaffoldKey,
+      endDrawer: _buildEndDrawer(context),
+      drawer: _buildDrawer(context),
       appBar: _buildAppBar(),
       body: _buildBody(),
       bottomNavigationBar: _buildNavigationBar(),
     );
   }
 
-  _buildDrawer() {
+  _buildDrawer(context) {
     return Drawer(
       child: Container(
         decoration: BoxDecoration(
           gradient: primaryGradient,
-//          image: DecorationImage(
-//              image: AssetImage("assets/images/bg_drawer.png"),
-//              fit: BoxFit.cover),
         ),
         child: ListView(
           children: <Widget>[
@@ -84,14 +87,26 @@ class _HomeScreenState extends State<HomeScreen> {
               title: 'About Us',
               leadIcon: Icons.info,
               onPressed: () {
-                print('Clicked about!');
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    child: AboutScreen(),
+                  ),
+                );
               },
             ),
             DrawerListTile(
               title: 'Contact Us',
               leadIcon: Icons.phone_android,
               onPressed: () {
-                print('Clicked Contact!');
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.fade,
+                    child: ContactUsScreen(),
+                  ),
+                );
               },
             ),
             DrawerListTile(
@@ -118,6 +133,56 @@ class _HomeScreenState extends State<HomeScreen> {
                   );
                 }
               },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  _buildEndDrawer(context) {
+    return Drawer(
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: primaryGradient,
+        ),
+        child: ListView(
+          children: <Widget>[
+            DrawerHeader(
+              child: Column(
+                children: <Widget>[
+                  Container(
+                      margin: EdgeInsets.all(10.0),
+                      width: 100.0,
+                      height: 100.0,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                              fit: BoxFit.fill,
+                              image: AssetImage("assets/images/avatar.jpg")))),
+                  Text(
+                    'VA VICHETH',
+                    style: TextStyle(color: secondaryWhite, fontSize: 14),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              height: 150.0,
+              margin: EdgeInsets.all(20.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text('First Name: VA',
+                      style: TextStyle(color: Colors.yellow)),
+                  Text('Last Name: Vicheth',
+                      style: TextStyle(color: Colors.yellow)),
+                  Text('Gender: Male', style: TextStyle(color: Colors.yellow)),
+                  Text('Date of Birth: 01/01/1990',
+                      style: TextStyle(color: Colors.yellow)),
+                ],
+              ),
             ),
           ],
         ),
@@ -164,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
         } else if (currentPage == 1) {
           print('favorite');
         } else if (currentPage == 2) {
-          print('my account');
+          _scaffoldKey.currentState.openEndDrawer();
         }
       },
     );
@@ -221,7 +286,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 Navigator.push(
                   context,
                   PageTransition(
-                      type: PageTransitionType.rightToLeft, child: PDFView()),
+                      type: PageTransitionType.rightToLeft,
+                      child: PDFView(
+                        books: bookAtIndex,
+                      )),
                 );
               },
               child: Container(

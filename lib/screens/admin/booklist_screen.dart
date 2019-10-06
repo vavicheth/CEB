@@ -102,7 +102,10 @@ class _BookListScreenState extends State<BookListScreen> {
                 Navigator.push(
                   context,
                   PageTransition(
-                      type: PageTransitionType.rightToLeft, child: PDFView()),
+                      type: PageTransitionType.rightToLeft,
+                      child: PDFView(
+                        books: bookAtIndex,
+                      )),
                 );
               },
               child: Container(
